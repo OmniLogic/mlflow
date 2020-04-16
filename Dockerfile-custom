@@ -1,6 +1,7 @@
 FROM ubuntu:18.04
 
-ENV MODEL_PATH=${MODEL_PATH}
+ARG MODEL_PATH
+ENV MODEL_PATH=$MODEL_PATH
 
 RUN apt-get -y update && apt-get install -y --no-install-recommends \
     wget \
