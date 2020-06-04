@@ -2,7 +2,7 @@ FROM tensorflow/tensorflow:1.15.0-py3
 
 RUN apt-get update
 
-COPY requirements-ml.txt /opt/mlfow
+COPY requirements-ml.txt /opt/mlflow
 
 ARG EXTRA_INDEX_URL
 ARG TRUSTED_HOST
