@@ -26,4 +26,4 @@ RUN ls /opt/ml/model/
 
 ENV MLFLOW_DISABLE_ENV_CREATION="true"
 ENV DISABLE_NGINX="true"
-ENTRYPOINT ["mlflow", "models", "serve", "--model-uri", "/opt/ml/model", "--port", "80", "--no-conda"]
+ENTRYPOINT ["mlflow", "models", "serve", "--model-uri", "/opt/ml/model", "--port", "8000", "--no-conda"]
