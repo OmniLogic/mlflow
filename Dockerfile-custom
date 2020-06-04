@@ -22,7 +22,8 @@ RUN pip install --extra-index-url ${EXTRA_INDEX_URL} --trusted-host ${TRUSTED_HO
 
 RUN pip install mlflow==1.7.2
 
-ENV MLFLOW_DISABLE_ENV_CREATION="true"
+RUN ls /opt/ml/model/
 
-ENTRYPOINT ["python", "-c", "from mlflow.models import container as C; C._serve()"]
+ENTRYPOINT ["mlflow", "models", "serve", "--model-uri", "/opt/ml/model" "--port" "80" "--no-conda"]
+#ENTRYPOINT ["python", "-c", "from mlflow.models import container as C; C._serve()"]
 
