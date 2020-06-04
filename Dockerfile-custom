@@ -3,6 +3,7 @@ FROM tensorflow/tensorflow:1.15.0-py3
 RUN apt-get update
 
 RUN mkdir /opt/mlflow
+RUN mkdir /opt/ml/model
 
 COPY requirements-ml.txt /opt/mlflow/
 
@@ -14,11 +15,11 @@ ENV MODEL_PATH=$MODEL_PATH
 RUN ls /opt/mlflow
 WORKDIR /opt/mlflow
 
+COPY ${MODEL_PATH} /opt/ml/model/
+
 RUN pip install --extra-index-url ${EXTRA_INDEX_URL} --trusted-host ${TRUSTED_HOST} -r requirements-ml.txt
 
 RUN pip install mlflow==1.7.2
-
-COPY ${MODEL_PATH} /opt/ml/model
 
 ENV MLFLOW_DISABLE_ENV_CREATION="true"
 
