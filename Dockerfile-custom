@@ -2,14 +2,16 @@ FROM tensorflow/tensorflow:1.15.0-py3
 
 RUN apt-get update
 
-COPY requirements-ml.txt /opt/mlflow
+RUN mkdir /opt/mlflow
+
+COPY requirements-ml.txt /opt/mlflow/
 
 ARG EXTRA_INDEX_URL
 ARG TRUSTED_HOST
 ARG MODEL_PATH
 ENV MODEL_PATH=$MODEL_PATH
 
-RUN ls /opt
+RUN ls /opt/mlflow
 WORKDIR /opt/mlflow
 
 RUN pip install --extra-index-url ${EXTRA_INDEX_URL} --trusted-host ${TRUSTED_HOST} -r requirements-ml.txt
