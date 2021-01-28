@@ -1,14 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: mlflow-api-
+  name: mlflow-api
   namespace: machine-learning
-  labels:
-    app: mlflow-api-
 spec:
   ports:
     - port: 80
       protocol: TCP
       targetPort: 8000
-  selector:
-    app: mlflow-api-
