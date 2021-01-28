@@ -5,10 +5,10 @@ metadata:
   namespace: machine-learning
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: mlflow-api
   template:
-    selector:
-      matchLabels:
-        app: mlflow-api
     spec:
       containers:
         - name: mlflow-api
